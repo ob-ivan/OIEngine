@@ -1,0 +1,33 @@
+!include '_header.xsl'
+&menueditor_defaultAction (
+    script @type='text/javascript' @src='scripts/ajaxRequest.js'
+    script @type='text/javascript' @src='scripts/searchForm.js'
+    script @type='text/javascript' @src='scripts/menueditor/common.js'
+    script @type='text/javascript' @src='scripts/menueditor/communicator.js'
+    script @type='text/javascript' @src='scripts/menueditor/dictionary.js'
+    script @type='text/javascript' @src='scripts/menueditor/menutree.js'
+    script @type='text/javascript' @src='scripts/menueditor/menuitem.js'
+    script @type='text/javascript' @src='scripts/menueditor/filters.js'
+    script @type='text/javascript' @src='scripts/menueditor/dom.js'
+    script @type='text/javascript' @src='scripts/menueditor/init.js'
+    div#projectList (
+        panelHeader @headName='Проекты' @isDragable='1' @parentName='projectList'
+        div.c (!for {sites/site} (span $padding-right='15px' $cursor='pointer' @onclick=('resetTo('{site_id}')') ={name}))
+        panelFooter @parentName='projectList'
+    )
+    div#menuT $display='none' (
+        panelHeader @headName='Меню' @isDragable='0' @parentName='menuT'
+        div.c (table#menuOverAll border='1' width='100%' (tr (
+            td @width='30%' $height='300px' $overflow='scroll' $vertical-align='top' $border-right='6px inset #777777' (
+                div#menuTree $height='300px' $overflow='scroll'
+            )
+            td $height='300px' $vertical-align='top' (div#commonSettings)
+        )))
+        panelFooter @parentName='menuT'
+    )
+    div#advancedSettings $display='none' (
+        panelHeader @headName='Дополнительные настройки' @isDragable='0' @parentName='advancedSettings'
+        div.c (div#filterSettings)
+        panelFooter @parentName='advancedSettings'
+    )
+)

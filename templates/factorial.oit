@@ -1,0 +1,2 @@
+&_(!for{1..n}({_}'! = 'fac@n={_}br))
+&fac@n=0(!choose(!when{n<=1}=1!when{n>=2}(*r=1!for{1..n}(*r={r*_}){r})!otherwise('Wrong input n='{n}'!')))

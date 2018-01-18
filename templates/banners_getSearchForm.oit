@@ -1,0 +1,57 @@
+&banners_getSearchForm (
+    div#searchCriteria $width='100%' (
+        panelHeader @headName='Управление баннерами' @isDragable=1 @parentName='searchCriteria'
+        div.c (
+            script @type='text/javascript' @src='/admin/scripts/ajaxRequest.js'
+            script @type='text/javascript' @src='/admin/scripts/banners.js'
+            script @type='text/javascript' ='var b=new BannersClass; b.url="/admin"'
+            form @name='bannersCriteria' (
+                table @cellspacing='7' @align='center' (
+                    tr (
+                        td @valign='top' $margin='4px' $border='1px solid #666' (
+                            'Ресурс: '
+                            script @type='text/javascript' ('b.site_id = '{sites.0.site_id})
+                            table (!for {sites/row} (tr (
+                                td (
+                                    input 
+                                        @type='radio' @name='site_id' @id=('site_'{site_id}) @value={site_id} @limit='1' 
+                                        @target='place' @onClick=('b.switchSite('{site_id}', this)') 
+                                        (!if {position() = 1} (@checked))
+                                    script @type='text/javascript' (
+                                        'b.positions['{site_id}'] = new Array();'
+                                        *site_id={site_id}
+                                        !for {positions[site_id]} (
+                                            'b.positions['{site_id}'][b.positions['{site_id}'].length] = '
+                                            '{id : '{banner_position_id}', name : "'{name}'"};'
+                                        )
+                                    )
+                                )
+                                td={name}
+                            )))
+                        )
+                        td @rowSpan='2' $border='1px solid #666' (
+                            'Тип: '
+                            table (!for {types/row} (tr (
+                                td (input @type='checkbox' @name='type[]' @value={bt_id}) td ({name}' ('{quant}')')
+                            )))
+                        )
+                    )
+                    tr (td @valign='top' $border='1px solid #666' ('Позиция: ' select#place (option @value='0' ='любая')))
+                )
+                center (button @type='button' @onClick='b.getList()' (img @src='img/btn_search.gif'))
+            )
+            script @type='text/javascript' ('b.init();b.switchSite(b.site_id,$("site_"+b.site_id))')
+        )
+        panelFooter @parentName='searchCriteria'
+    )
+    div#searchResult $width='100%' $display='none' (
+        panelHeader @headName='Результаты поиска' @isDragable=0 @parentName='searchResult'
+        div.c
+        panelFooter @parentName='searchResult'
+    )
+    div#viewObject $width='100%' $display='none' (
+        panelHeader @headName='Просмотр баннера' @isDragable=0 @parentName='viewObject'
+        div.c
+        panelFooter @parentName='viewObject'
+    )
+)

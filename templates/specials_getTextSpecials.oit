@@ -1,0 +1,12 @@
+&specials_getTextSpecials ( -- Р-Н рекомендует
+    *menu_id={_special_menus_id}
+    !if {count(rows) > 0} (
+        menu_header @head='Мы рекомендуем' @class='sky'
+        div.floatBox ( table.menu_list_table ( !for {rows} ( tr (
+            td.dottd (img.img_b @src='/images/bullet.gif')
+            td (a   @target='_blank'
+                    @href ({href}!choose (!when {contains(href,'?')} ='&', !otherwise ='?')'menu='{menu_id})
+                    ={address})
+        ))))
+    )
+)

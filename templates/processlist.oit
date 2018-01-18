@@ -1,0 +1,55 @@
+﻿*msl=20
+&printRow@row(tr(!for{keys(row)}(*val{row._}!if{_='State'&strlen(val)>msl}(*val({trim(substr(val,0,msl))}'...'))td={val})))
+&_(
+    -- header('Content-Type: text/html; charset=utf8')
+    *time{integer(POST.time) or 10}
+    !if{time<=0}*time=2
+    *db{POST.db or 'local'}
+    !if{db='admin'}(
+        *host='admin.server.ru'
+        *pass='password'
+    )
+    !else(
+        *host='admin.local.int'
+        *pass='password'
+    )
+    *pdo{new mysqli(host, 'username', pass, 'dbname')}
+    {pdo.error}
+    *{pdo.autocommit(true)}
+    *{pdo.set_charset('UTF8')}
+    html (
+        head (
+            title ({host}' - MySQL Process List')
+            script @type='text/javascript' ='function $(e){return document.getElementById(e)}'
+            !style (
+                button ($background='none' $border='none' $margin=0 $padding=0)
+                #time ($width='20px' $text-align='center' $border='none' $border-bottom='1px solid grey' $margin=0)
+                table ($border-collapse='collapse' $font-size='12px' $white-space='nowrap')
+            )
+        )
+        body (
+            table @width='100%' @border=1 (
+                *res{pdo.query('show processlist')}
+                *row{res.fetch_assoc()}
+                tr(!for{keys(row)}(th(!if{_='Info'}(@width='100%'){_})))
+                printRow={row}
+                !while{row}(printRow={row}*row{res.fetch_assoc()})
+            )
+            br
+            form#form @method='POST' (
+                'Обновлять через '
+                button @onclick='if($("time").value>1)$("time").value--;return false' ='&ndash;'
+                input#time @name='time' @value={time}
+                button @onclick='$("time").value++; return false' ='+'
+                ' секунд'!if{floor((time%100)/10)!=1}(*td{time%10}!if{td=1}='у'!elseif{td@2..4}='ы')'.'
+                br
+                input#db_local @type='radio' @name='db' @value='local' (!if{db='local'}(@checked))
+                label @for='db_local' ='Local DB'
+                br
+                input#db_admin @type='radio' @name='db' @value='admin' (!if{db='admin'}(@checked))
+                label @for='db_admin' ='Admin DB'
+            )
+            script @type='text/javascript' ('window.setTimeout ("$(\"form\").submit()", '{time*1000}')')
+        )
+    )
+)

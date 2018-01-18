@@ -1,0 +1,247 @@
+﻿&_(
+    html (
+        head (
+            meta @http-equiv='Content-Type' @content='text/html; charset=UTF-8';
+            meta @name=author @content=Tenka;
+            meta @name=description @content='Манга - каталог переводов. Поиск манги, перевод манги, общение отаку';
+            meta @name=keywords @content=(
+                'Манга, Отаку, Скачать мангу, Сканы манги, Перевод манга, Манга на русском, Manga scanz, Manga scanlatinos, '
+                'Online Manga, Japaneese comics, Web Manga, Anime, Manga, Doshinji, Doujinshi, Shoujo, Shoujo-ai, Shoujo ai, '
+                'Yuri,  Mahou shoujo, Otaku'
+            )
+            link @rel=alternate @type='application/rss+xml' @title='Аниманга RSS (Watashi no + okusuri)' @href='http://animanga.ru/rss.asp?manga=2116';
+            title:'Watashi no + okusuri - АниМанга - русские переводы манги';
+            link @rel=stylesheet @type='text/css' @href='anim.css';
+            script @src='BoxOver.js';
+            link @rel=stylesheet @type='text/css' @href='inf.css';
+        )
+        body (
+            script @src='mnu.js' @type='text/javascript';
+            table.dv @align=center @cellpadding=0 @cellspacing=0 (tbody (
+                tr (td @colspan=3 @height=88 @valign=top @width=800 (img @src='animanga_logo.gif' @alt='' @border=0 @height=88 @width=800))
+                tr @background='back_light.gif' (
+                    td.mpnl @height=40 @width=123 (img @src='left_new.gif' @alt='' @border=0 @height=40 @width=123)
+                    td.mpnl @height=40 @valign=top @width=677 (
+                        table @border=0 @cellpadding=0 @cellspacing=0 @height=40 @width=677 (tbody (
+                            tr (
+                                td.mpnl @height=20 @width=11 (img @src='left_part.gif' @alt='' @border=0 @height=20 @width=11)
+                                td @background='mnu_back.gif' @height=20 @width=528 (table @width='100%' (tbody (tr (
+                                    td#td_news.mnu_td @onmouseover='javascript:m_onclick("td_news","tbl_news")' ='Сайт'
+                                    td#td_manga.mnu_td @onmouseover='javascript:m_onclick("td_manga","tbl_manga")' ='Манга'
+                                    td#td_set.mnu_td @onmouseover='javascript:m_onclick("td_rel","tbl_set")' ='Настройки'
+                                    td#td_rel.mnu_td @onmouseover='javascript:m_onclick("td_rel","tbl_rel")' ='Общение'
+                                    td#td_ex.mnu_td @onmouseover='javascript:m_onclick("td_ex","tbl_ex")' ='Обмен'
+                                    td#td_about.mnu_td @onmouseover='javascript:m_onclick("td_about","tbl_about")' ='О сайте'
+                                ))))
+                                td @height=20 @width=138 (img @src='right_part.gif' @alt='' @border=0 @height=20 @width=138)
+                            )
+                            tr @bgcolor='#fff4d1' (
+                                td @height=20 ='&nbsp;'
+                                td @colspan=2 @height=20 (
+                                    table#tbl_manga.mnu_sub @cellpadding=0 @cellspacing=0 (tbody (tr (
+                                        td (a @href='catalog.asp' ='Переводы')
+                                        td (a @href='catalog.asp?sort=v&amp;let=all' ='Топ')
+                                        td (a @href='auth/authors.asp' ='Авторы')
+                                        td (a @href='styles/styles.asp' ='Жанры')
+                                        td (a @href='trans/translators.asp' ='Команды')
+                                        td (a @href='pubs/publist.asp' ='Издательства')
+                                        td @nowrap=nowrap (a @href='future/future.asp' ='Будущие проекты')
+                                    )))
+                                    table#tbl_news.mnu_sub @cellpadding=0 @cellspacing=0 (tbody (tr (
+                                        td (a @href='index.asp' ='Обновления')
+                                        td (a @href='news.asp' ='Новости сайта')
+                                        td (a @href='subscribe.asp' ='Подписаться')
+                                        td (a @href='issues/issues.asp' ='Статьи')
+                                    )))
+                                    table#tbl_set.mnu_sub @cellpadding=0 @cellspacing=0 (tbody (tr (
+                                        td (a @href='members/control.asp' ='Личный кабинет')
+                                    )))
+                                    table#tbl_rel.mnu_sub @cellpadding=0 @cellspacing=0 (tbody (tr (
+                                        td (a @href='forum/default.asp' ='Форум')
+                                        td (a @href='mess/inbox.asp' ='Почта')
+                                        td (a @href='forum/members.asp' ='Пользователи')
+                                    )))
+                                    table#tbl_about.mnu_sub @cellpadding=0 @cellspacing=0 (tbody (tr (
+                                        td (a @href='staff.asp' ='Доска почета')
+                                        td (a @href='inf/informers.asp' ='Информеры')
+                                        td (a @href='contacts.asp' ='Контакты')
+                                        td (a @href='faq.asp' ='ЧАВО')
+                                        td (a @href='links.asp' ='Ссылки')
+                                    )))
+                                    table#tbl_ex.mnu_sub @cellpadding=0 @cellspacing=0 (tbody (tr (
+                                        td (a @href='exchange/index.asp' ='Списки аниме и манги')
+                                    )))
+                                )
+                            )
+                        ))
+                    )
+                )
+                tr (
+                    td.mpnl @rowspan=3 @background='back_light.gif' @height='100%' @valign='top' (
+                        p @align=center (
+                            input.button $width='100px' @value='Помочь сайту' @onclick='location.href="/donate.asp"' @type='button'
+                        )
+                        form#frm_search @action='/qsearch.asp' @method=post (
+                            table.tblSubLeft @valign=top @align=center (tbody (
+                                tr (td @height=50)
+                                tr (td @align=center @valign=top (input.textbox $width=100px @name=tb_search @type=textbox))
+                                tr (td @align=center (input.button @value='Поиск' @type=submit))
+                                tr (td @align=center (a @href='search.asp' ='Расширенный поиск'))
+                            ))
+                        )
+                        form#form2 @action='/manga.asp?id=2116' @method=post @name=form2 (
+                            input @name=Method_Type @value=logout @type=hidden
+                            table @align=center @width='100%' (tbody (tr (
+                                td @align=center (input#submit1.button @value='Выход' @name=submit1 @tabindex='-1' @type=submit)
+                            )))
+                        )
+                        p @align=center (
+                            script @language=JavaScript @src='orphus.js';
+                            span#orphus @title='Система Orphus' (img @alt='Система Orphus' @src='orphus.gif' @border=0)
+                        )
+                        center (
+                            table @align=center @width=92 (tbody (tr (td.button $font-size=8pt @align=center (
+                                a @href='inf/informers.asp' ='Поставь на свой сайт!'
+                            ))))
+                            script @src='infu.htm' @type='text/javascript';
+                            script @language=javascript ='write_manga()';
+                            '...'
+                        )
+                    )
+                    td#tdMain @height='100%' @valign=top (
+                        div.maindiv $padding=10px $font-size=9pt (
+                            div $width='100%' (
+                                div $width=640px @align=right (
+                                    font @face='Verdana, Arial, Helvetica' @size=1 (
+                                        'Привет, '
+                                        b (
+                                            a   @href='forum/pop_profile.asp?mode=Edit' 
+                                                @onmouseover='(window.status="Редактировать профиль..."); return true' 
+                                                @onmouseout='(window.status=""); return true' 
+                                                @tabindex='-1'
+                                                (acronym @title='Редактировать профиль...'='ob_ivan!')
+                                        )
+                                    )
+                                )
+                                table @width='100%' (tbody (tr (
+                                    td (div.txt_hdr ='Watashi no + okusuri'
+                                        table.tblDesc @border=0 @width='100%' (tbody (
+                                            tr (td @width=20 ='&nbsp;' td (b='Моё + Лекарство')) 
+                                            tr (td @width=20 ='&nbsp;' td (b='わたしの+おくすり'))
+                                        ))
+                                    )
+                                    td @align=right (
+                                        a @title='Отслеживать обновления переводов этой манги' @href='rss.asp?manga=2116' (
+                                            img @src='rss.gif' @border=0
+                                        )
+                                    )
+                                )))
+                                table @width='100%'(tbody (tr (
+                                    td @valign=top @width=200 (
+                                        img.ani_img @title='Watashi no + okusuri' @src='m_2116.jpg'
+                                        br
+                                        a @href='usr/send_img.asp?id=2116' ='Прислать картинку'
+                                    )
+                                    td @valign=top (table.mnlist @width='100%'(tbody (
+                                        tr (th.mth @colspan=2 ='Информация о манге')
+                                        tr.mnl_tr1 (th.mtd='Автор:' td.mtd $width='100%' (
+                                            a @href='auth/author.asp?id=1108' ='TAKAMIYA Satoru'
+                                        ))
+                                        tr.mnl_tr2 (
+                                            th.mtd @nowrap=nowrap ='Жанр:'
+                                            td.mtd (
+                                                a @href='styles/style.asp?id=1' 'сёдзё' ', ' 
+                                                a @href='styles/style.asp?id=6' 'комедия' ', '
+                                                a @href='styles/style.asp?id=7' 'фэнтези' ', '
+                                                a @href='styles/style.asp?id=8' 'романтика' ', '
+                                                a @href='styles/style.asp?id=36' 'махо-сёдзё' 
+                                                span $white-space=nowrap (
+                                                    '[' a (@href='mangalist.asp?genres=1,6,7,8,36', 'найти похожие') ']'
+                                                )
+                                            )
+                                        )
+                                        tr.mnl_tr1 (th.mtd='Томов:' td.mtd=1)
+                                        tr (th.mth @colspan=2 ='Рейтинг')
+                                        tr.mnl_tr1 (th.mtd='По&nbsp;Байесу:' td.mtd='9.39 (номер в топе: 40)')
+                                        tr.mnl_tr2 (
+                                            th.mtd='Среднее:'
+                                            td.mtd (
+                                                '9.92 (голосов: 22)&nbsp;[' 
+                                                    a @href='graph.asp?id=2116' @title='Гистограммы голосов' ='подробнее' 
+                                                ']&nbsp;['
+                                                    a @href='vote.asp?id=2116' ='проголосовать' 
+                                                ']'
+                                            )
+                                        )
+                                        tr (th.mth @colspan=2 ='Издательства')
+                                        tr (th.mth @colspan=2 ='Связанные произведения')
+                                        tr.mnl_tr1 (td.mtd @colspan=2 ='нет')
+                                    )))
+                                )))
+                                p='Инори предстоит сдать выпускной экзамен, чтобы стать настоящей
+                                волшебницей. А экзамен весьма непростой: необходимо влюбить в себя Аоя,
+                                юношу с очень скверным характером, и создать волшебное лекарство любви.
+                                Инори решает, что она будет первой в мире волшебницей, которая создаст
+                                наичистейшее лекарство любви. А это значит, что её сердце должно
+                                оставаться холодным.'
+                                p $font-style=italic @align=right ('Описание прислал(а) ' b='Tenka')
+                                p @align=right (
+                                    a @href='usr/send_descr.asp?id=2116' ='Прислать своё описание' br,
+                                    a @href='forum/topic.asp?topic_id=3865&mode=getnew' ='Обсудить (12)' br
+                                )
+                                br,
+                                p.header2 'Сканы'
+                                table.mnlist @cellpadding=0 @cellspacing=0 @width='100%' (
+                                    tbody (
+                                        tr.mthl (
+                                            td (
+                                                table.tblCmn @border=0 @cellpadding=0 @cellspacing=0 (tbody (tr.mthl (
+                                                    td.mthl $font-weight=bold (a @href='trans/trans.asp?pid=83' ='Mangaman' '&nbsp;')
+                                                    td.mthr @align=right ='перевод продолжается&nbsp;'
+                                                )))
+                                            )
+                                        )
+                                        tr.mnl_tr1 (td $padding=0pt (table.infoTable (tbody (
+                                            tr.mnl_tr1 (
+                                                td @rowspan=2 $padding-left=10px @align=left @valign=middle;
+                                                td.mHR @nowrap=nowrap @valign=bottom @width='20%' (
+                                                    a @href='vote.asp?lid=2639&o=1' @title='Проголосовать!' 'Качество перевода:'
+                                                )
+                                                td @valign=bottom @width='20%' (
+                                                    a @href='graph.asp?lid=2639&o=1' @title='Подробнее' '9.75 (4)'
+                                                )
+                                                td $padding=3px @rowspan=4 @align=center @valign=middle @width='20%' (
+                                                    a @title='Архивы' @href='dolinks.asp?id=2639' @target='_blank' (
+                                                        img @src='download.gif' @alt='' @border=0 @height=15 @width=13; br;
+                                                        'скачать' br; 'архивы'
+                                                    )
+                                                )
+                                            )
+                                            tr.mnl_tr1 (
+                                                td.mHR @nowrap=nowrap @valign=top (
+                                                    a @href='vote.asp?lid=2639&o=1' @title='Проголосовать!' 'Качество сканов:'
+                                                )
+                                                td @valign=top (
+                                                    a @href='graph.asp?lid=2639&o=1' @title='Подробнее' '9.75 (4)'
+                                                )
+                                            )
+                                        ))))
+                                        tr.mnl_tr1 (td $padding=5px ('...'))
+                                    )
+                                )
+                                br, br
+                            )
+                        )
+                    )
+                )
+                tr (td.ftr_td @align=center @height=20 (
+                    hr @width=500;
+                    a @href='http://itadakimasu.ru/' (
+                        img @src='itadakimasu.gif' @alt='Магазин манги и артбуков' @border=0 @height=31 @width=88
+                    )
+                ))
+                tr (td.ftr_td @align=center @height=7 ('Где скачать мангу'))
+            ))
+        )
+    )
+)
